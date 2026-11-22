@@ -1,0 +1,13 @@
+# Ignore downloaded model weights and artifacts
+models/*
+!models/.gitkeep
+*.safetensors
+*.bin
+*.pt
+*.onnx
+*.msgpack
+*.h5
+__pycache__/
+*.pyc
+.cache/
+.env
