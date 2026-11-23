@@ -95,11 +95,11 @@ class TransformersToolkit:
         return [out["generated_text"] for out in outputs]
 
     # ------------------------------------------------------------------
-    # 6. Text Translation (English -> French)
+    # 6. Text Translation (French -> English)
     # ------------------------------------------------------------------
     def text_translation(self, text: str) -> str:
-        """Translate text from English to French using Helsinki-NLP/opus-mt-en-fr."""
-        model_name = "Helsinki-NLP/opus-mt-en-fr"
+        """Translate text from French to English using Helsinki-NLP/opus-mt-fr-en."""
+        model_name = "Helsinki-NLP/opus-mt-fr-en"
         try:
             if "translator" not in self._pipelines:
                 self._pipelines["translator"] = pipeline("translation", model=model_name, device=self.device)

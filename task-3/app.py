@@ -105,14 +105,14 @@ with gr.Blocks(title="EE471 - Hugging Face Multi-Task AI Dashboard") as demo:
 
         # Tab 6: Text Translation
         with gr.TabItem("6. Translation"):
-            gr.Markdown("### Machine Translation (English -> French) with MarianMT")
+            gr.Markdown("### Machine Translation (French -> English) with MarianMT")
             trans_text = gr.Textbox(
-                label="English Source Text",
-                value="The 2008 Global Financial Crisis stands as the most severe economic collapse of the 21st century, often compared to the Great Depression.",
+                label="French Source Text",
+                value="Ce cours est produit par Hugging Face.",
                 lines=3
             )
-            trans_btn = gr.Button("Translate to French", variant="primary")
-            trans_output = gr.Textbox(label="French Translation", lines=3)
+            trans_btn = gr.Button("Translate to English", variant="primary")
+            trans_output = gr.Textbox(label="English Translation", lines=3)
             trans_btn.click(toolkit.text_translation, inputs=trans_text, outputs=trans_output)
 
         # Tab 7: Mask Filling
