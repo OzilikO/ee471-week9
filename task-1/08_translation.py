@@ -1,24 +1,21 @@
-from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
+from transformers import pipeline, AutoTokenizer, AutoModelForSeq2SeqLM
 
-# 8. Translation pipeline using Helsinki-NLP/opus-mt-fr-en (Pre-downloaded Week 9 model)
-# Translates the 2008 Financial Crisis statement from French to English
-model_name = "Helsinki-NLP/opus-mt-fr-en"
+# 8. Translation pipeline (English to French)
 
-# French sentence of the 2008 Financial Crisis:
-french_text = (
-    "Ce cours est produit par Hugging Face."
-)
+model_name = "Helsinki-NLP/opus-mt-en-fr"
+text = "Ce cours est produit par Hugging Face."
 
-print("=== Text Translation (French -> English) ===")
-print(f"Model: {model_name} (Loaded locally from cache)")
-print(f"Source (FR):\n{french_text}\n")
+print("=== Text Translation (EN -> FR) ===")
+print(f"Source (EN):\n{text}\n")
 
-# Load tokenizer and model from local cache (runs 100% offline)
-tokenizer = AutoTokenizer.from_pretrained(model_name)
-model = AutoModelForSeq2SeqLM.from_pretrained(model_name)
+try:
+    translator = pipeline("translation", model=model_name)
+    translation = translator(text)[0]["translation_text"]
+except Exception:
+    tokenizer = AutoTokenizer.from_pretrained(model_name)
+    model = AutoModelForSeq2SeqLM.from_pretrained(model_name)
+    inputs = tokenizer(text, return_tensors="pt")
+    outputs = model.generate(**inputs)
+    translation = tokenizer.decode(outputs[0], skip_special_tokens=True)
 
-inputs = tokenizer(french_text, return_tensors="pt")
-outputs = model.generate(**inputs)
-english_translation = tokenizer.decode(outputs[0], skip_special_tokens=True)
-
-print(f"Translation (EN):\n{english_translation}")
+print(f"Translation (FR):\n{translation}")

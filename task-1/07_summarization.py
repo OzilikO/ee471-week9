@@ -1,11 +1,7 @@
 from transformers import pipeline
 
-# 7. Text Summarization adapted to use SmolLM2-360M
-# Model: HuggingFaceTB/SmolLM2-360M (Pre-downloaded Local LLM - Zero web download required)
-print("=== Text Summarization ===")
-print("Model: HuggingFaceTB/SmolLM2-360M (Pre-cached Local LLM - Zero Web Download)\n")
-
-generator = pipeline("text-generation", model="HuggingFaceTB/SmolLM2-360M")
+# 7. Summarization pipeline
+summarizer = pipeline("summarization")
 
 text = (
     "The 2008 Global Financial Crisis stands as the most severe economic collapse of the "
@@ -16,14 +12,8 @@ text = (
     "banks to issue high-risk loans to borrowers with poor credit."
 )
 
-prompt = (
-    f"Passage: {text}\n\n"
-    "Summary in one sentence:"
-)
+result = summarizer(text, max_length=50, min_length=20, do_sample=False)
 
-result = generator(prompt, max_new_tokens=40, do_sample=False)
-full_output = result[0]["generated_text"]
-summary = full_output.split("Summary in one sentence:")[-1].strip().split("\n")[0]
-
+print("=== Text Summarization ===")
 print(f"Original Text:\n{text}\n")
-print(f"Summary:\n{summary}")
+print(f"Summary:\n{result[0]['summary_text']}")
