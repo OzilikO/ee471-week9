@@ -11,3 +11,4 @@ __pycache__/
 *.pyc
 .cache/
 .env
+task-4/saved_model/
