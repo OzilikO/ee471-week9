@@ -1,8 +1,3 @@
-"""
-Task 4.4: Input Truncating
-Hugging Face Course Chapter 2.5: Handling Multiple Sequences
-"""
-
 from transformers import AutoTokenizer
 
 checkpoint = "distilbert/distilbert-base-uncased-finetuned-sst-2-english"
@@ -15,7 +10,7 @@ long_text = (
     "rippled across the globe."
 )
 
-max_allowed_length = 12
+
 
 print("==================================================")
 print("Task 4.4: Input Truncating")
@@ -27,15 +22,21 @@ print(f"Original Text ({len(tokens_before)} tokens):\n\"{long_text}\"\n")
 batch = tokenizer(
     long_text,
     truncation=True,
-    max_length=max_allowed_length,
+    max_length=5,
     return_tensors="pt"
 )
 
-print(f"Truncated Input IDs (max_length = {max_allowed_length}):")
+print(f"Truncated Input IDs (max_length = 5):")
 print(batch["input_ids"])
 print(f"Tensor Shape: {batch['input_ids'].shape} (exactly {batch['input_ids'].shape[1]} tokens)\n")
 
-print("Decoded Truncated Text:")
+print("Attention Mask Tensor:")
+print(batch["attention_mask"])
+
+print("\nToken Type IDs Tensor:")
+print(batch["token_type_ids"])
+
+print("\nDecoded Truncated Text:")
 print(f"\"{tokenizer.decode(batch['input_ids'][0])}\"\n")
 
 print("✓ Input truncating demonstrated successfully!")
