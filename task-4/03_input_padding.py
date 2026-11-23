@@ -1,7 +1,3 @@
-"""
-Task 4.3: Input Padding
-Hugging Face Course Chapter 2.5: Handling Multiple Sequences
-"""
 
 from transformers import AutoTokenizer
 
@@ -31,4 +27,7 @@ print(batch["input_ids"])
 print("\nAttention Mask Tensor (1 = Real Token, 0 = Padded Token):")
 print(batch["attention_mask"])
 
-print("\n✓ Input padding demonstrated successfully!")
+print("\nToken Type IDs Tensor (Segment A = 0, Segment B = 1):")
+print(batch["token_type_ids"])
+
+print("\n✓ Input padding and token tensors demonstrated successfully!")
