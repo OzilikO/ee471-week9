@@ -4,8 +4,8 @@ from transformers import pipeline
 
 audio_path = os.path.join(os.path.dirname(__file__), "sample_data", "sample_speech.wav")
 
-# 10. Automatic Speech Recognition (ASR) pipeline with Whisper Large v3
-# Follows Hugging Face Course Chapter 1.3
+# 10. Automatic Speech Recognition (ASR) pipeline
+
 transcriber = pipeline("automatic-speech-recognition", model="openai/whisper-large-v3")
 
 # Load audio via soundfile (robust across all Linux/WSL environments without requiring system ffmpeg)

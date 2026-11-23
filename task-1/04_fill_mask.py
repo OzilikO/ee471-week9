@@ -1,16 +1,25 @@
 from transformers import pipeline
 
-# 4. Mask filling pipeline from Hugging Face Course Chapter 1.3
-unmasker = pipeline("fill-mask")
+# 4. Fill-Mask / Infilling adapted to use SmolLM2-360M
+# Model: HuggingFaceTB/SmolLM2-360M (Pre-downloaded Local LLM - Zero web download required)
+print("=== Mask Filling / Infilling ===")
+print("Model: HuggingFaceTB/SmolLM2-360M (Pre-cached Local LLM - Zero Web Download)\n")
 
-# Automatically use the tokenizer's mask token (e.g. <mask> for RoBERTa, [MASK] for BERT)
-mask_token = unmasker.tokenizer.mask_token
-prompt = f"To understand generative AI, one must study {mask_token} well."
+generator = pipeline("text-generation", model="HuggingFaceTB/SmolLM2-360M")
 
-results = unmasker(prompt, top_k=2)
+# Original sentence from exercise: "To understand generative AI, one must study [...] well."
+prompt = "To understand generative AI, one must study"
 
-print("=== Mask Filling ===")
-print(f"Prompt: \"{prompt}\"\n")
+results = generator(
+    prompt,
+    max_new_tokens=15,
+    num_return_sequences=2,
+    do_sample=True,
+    temperature=0.7
+)
+
+print(f"Prompt: \"{prompt} [...] well.\"\n")
 for idx, res in enumerate(results, 1):
-    print(f"Option {idx}: '{res['token_str']}' (score: {res['score']:.4f})")
-    print(f"Filled sentence: {res['sequence']}\n")
+    # Ensure completion flows into the sentence
+    completed = res['generated_text'].strip()
+    print(f"Alternative {idx}: {completed}")

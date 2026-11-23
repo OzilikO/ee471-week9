@@ -1,6 +1,6 @@
 from transformers import pipeline
 
-# 1. Sentiment Analysis pipeline from Hugging Face Course Chapter 1.3
+# 1. Sentiment Analysis pipeline
 classifier = pipeline("sentiment-analysis")
 
 sentences = [

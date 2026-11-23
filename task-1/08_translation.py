@@ -6,8 +6,7 @@ model_name = "Helsinki-NLP/opus-mt-fr-en"
 
 # French sentence of the 2008 Financial Crisis:
 french_text = (
-    "La crise financière mondiale de 2008 constitue le plus grave effondrement "
-    "économique du XXIe siècle, souvent comparé à la Grande Dépression."
+    "Ce cours est produit par Hugging Face."
 )
 
 print("=== Text Translation (French -> English) ===")
