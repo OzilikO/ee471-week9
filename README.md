@@ -31,15 +31,10 @@ This repository contains setup and verification scripts for the Week 9 In-Class 
 
 ### 1. Download models:
 ```bash
-python3 download_models.py
+python3 download_all_models_local.py
 ```
 
-### 2. Verify all models:
-```bash
-python3 test_models.py
-```
-
-### 3. Usage Examples (Hugging Face Course Ch 1.3 & Transformers v5):
+### 2. Usage Examples (Hugging Face Course Ch 1.3 & Transformers v5):
 
 #### Text Generation (`SmolLM2-360M`):
 ```python
