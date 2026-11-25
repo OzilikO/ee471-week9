@@ -1,7 +1,12 @@
+from pathlib import Path
 from transformers import pipeline
 
+MODELS_DIR = Path(__file__).resolve().parent.parent / "models"
+model_path = MODELS_DIR / "fill-mask"
+model_name = str(model_path) if model_path.exists() else "distilbert/distilroberta-base"
+
 # 4. Mask filling pipeline
-unmasker = pipeline("fill-mask")
+unmasker = pipeline("fill-mask", model=model_name)
 
 # Automatically use the tokenizer's mask token (e.g. <mask> for RoBERTa, [MASK] for BERT)
 mask_token = unmasker.tokenizer.mask_token

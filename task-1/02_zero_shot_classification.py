@@ -1,7 +1,12 @@
+from pathlib import Path
 from transformers import pipeline
 
+MODELS_DIR = Path(__file__).resolve().parent.parent / "models"
+model_path = MODELS_DIR / "zero-shot-classification"
+model_name = str(model_path) if model_path.exists() else "facebook/bart-large-mnli"
+
 # 2. Zero-shot classification pipeline
-classifier = pipeline("zero-shot-classification")
+classifier = pipeline("zero-shot-classification", model=model_name)
 
 sentence = "Berkshire keeps their cash reserves at an extremely high level."
 candidate_labels = ["education", "finance", "business", "technology"]

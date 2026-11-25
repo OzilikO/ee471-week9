@@ -1,8 +1,3 @@
-"""
-Task 4.2: Text Encoding and Decoding
-Hugging Face Course Chapter 2.3: Tokenizers
-"""
-
 from transformers import AutoTokenizer
 
 checkpoint = "distilbert/distilbert-base-uncased-finetuned-sst-2-english"
@@ -14,6 +9,9 @@ print("==================================================")
 print("Task 4.2: Text Encoding and Decoding")
 print("==================================================")
 print(f"Original Text:\n\"{text}\"\n")
+
+encoded_input = tokenizer("Hello, I'm a single sentence!")
+print(encoded_input)
 
 # Step 1: Tokenize (splitting into wordpieces)
 tokens = tokenizer.tokenize(text)

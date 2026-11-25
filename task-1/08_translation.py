@@ -1,8 +1,12 @@
+from pathlib import Path
 from transformers import pipeline, AutoTokenizer, AutoModelForSeq2SeqLM
+
+MODELS_DIR = Path(__file__).resolve().parent.parent / "models"
+model_path = MODELS_DIR / "opus-mt-fr-en"
+model_name = str(model_path) if model_path.exists() else "Helsinki-NLP/opus-mt-fr-en"
 
 # 8. Translation pipeline (French to English)
 # Follows Hugging Face Course Chapter 1.3: Ce cours est produit par Hugging Face.
-model_name = "Helsinki-NLP/opus-mt-fr-en"
 text = "Ce cours est produit par Hugging Face."
 
 print("=== Text Translation (FR -> EN) ===")

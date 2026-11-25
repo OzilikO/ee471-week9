@@ -1,10 +1,15 @@
 import os
+from pathlib import Path
 from transformers import pipeline
+
+MODELS_DIR = Path(__file__).resolve().parent.parent / "models"
+model_path = MODELS_DIR / "vit-base-patch16-224"
+model_name = str(model_path) if model_path.exists() else "google/vit-base-patch16-224"
 
 # 9. Vision Transformer Image Classification pipeline
 image_path = os.path.join(os.path.dirname(__file__), "sample_data", "cat.jpg")
 
-classifier = pipeline("image-classification", model="google/vit-base-patch16-224")
+classifier = pipeline("image-classification", model=model_name)
 
 results = classifier(image_path)
 

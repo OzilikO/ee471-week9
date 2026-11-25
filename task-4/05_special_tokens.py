@@ -1,7 +1,4 @@
-"""
-Task 4.5: Adding Special Tokens
-Hugging Face Course Chapter 2.5: Handling Multiple Sequences - Special Tokens
-"""
+
 
 from transformers import AutoTokenizer
 

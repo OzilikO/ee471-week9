@@ -1,8 +1,3 @@
-"""
-Task 4.1: Load & Save a model
-Hugging Face Course Chapter 2.2: Models
-"""
-
 import os
 import shutil
 from pathlib import Path
