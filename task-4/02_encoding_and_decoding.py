@@ -11,6 +11,7 @@ print("==================================================")
 print(f"Original Text:\n\"{text}\"\n")
 
 encoded_input = tokenizer("Hello, I'm a single sentence!")
+
 print(encoded_input)
 
 # Step 1: Tokenize (splitting into wordpieces)

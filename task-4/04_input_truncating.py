@@ -8,6 +8,7 @@ long_text = (
     "of the 21st century, often compared to the Great Depression of the 1930s. "
     "Triggered by the bursting of the United States housing bubble, its effects "
     "rippled across the globe."
+    "very very very very very very very"
 )
 
 
