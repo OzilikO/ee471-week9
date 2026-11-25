@@ -23,7 +23,7 @@ This repository contains setup and verification scripts for the Week 9 In-Class 
 
 ## Project Structure
 
-- `download_models.py`: Downloads all 4 models and caches them in `~/.cache/huggingface/hub` with local symbolic links in `models/`.
+- `download_all_models_local.py`: Downloads all 4 models and caches them in `~/.cache/huggingface/hub` with local symbolic links in `models/`.
 - `test_models.py`: Runs a quick offline-capable inference test on all 4 models to verify weights and pipelines.
 - `models/`: Directory containing symbolic links to the cached model snapshots.
 
